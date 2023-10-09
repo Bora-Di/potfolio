@@ -225,6 +225,8 @@ td {
     width: 20%;
 }
 
+
+/*
 .about-icon a {
     display: inline-flex;
     justify-content: space-between;
@@ -242,4 +244,4 @@ td {
 .about-icon a:hover {
     background-color: transparent;
     color: var(--main-color);
-}
+}*/
