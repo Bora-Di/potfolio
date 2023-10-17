@@ -12,10 +12,15 @@
         
          :root {
             --bg-color: #000000;
+            --second-bg-color: #11100e;
+            --text-color: #cac7c0;
+            --main-color: #5e4429;
+            --second-main-color: #7f7367;
+            /* --bg-color: #17171b;
             --second-bg-color: #0a0a0a;
             --text-color: #fff;
-            --main-color: #9B6C80;
-            --second-main-color: #dd296ed7;
+            --main-color: #28ad60;
+            --second-main-color: #1f9242d7;*/
             /* --main-color: #8860e4;*/
             /*--main-color: #911b1b;*/
             /* --main-color: #be323b;*/
@@ -94,20 +99,23 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-        
-        .home-img img {
-            width: 27vw;
-        }
-        
-        .home-content {
-            margin-left: 5rem;
             width: 80%;
         }
         
+        .home-img img {
+            margin-left: 0%;
+            width: 40%;
+        }
+        
+        .home-content {
+            margin-bottom: 10%;
+            height: auto;
+            width: 40%;
+        }
+        
         .home-content h3 {
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 300;
         }
         
         span {
@@ -117,8 +125,8 @@
         .home-content h1 {
             /*color: var(--main-color);*/
             margin-top: 5rem;
-            font-size: 5rem;
-            font-weight: 700;
+            font-size: 4rem;
+            font-weight: 500;
             line-height: 1.3;
         }
         
@@ -126,8 +134,12 @@
             font-size: 1.6rem;
         }
         
+        .social-media {
+            margin-bottom: 20%;
+        }
+        
         .social-media a {
-            display: grid;
+            display: flex;
             right: 0;
             justify-content: center;
             align-items: center;
@@ -149,12 +161,12 @@
         }
         
         .btn {
-            display: inline-block;
+            display: inline-flex;
             padding: 1rem 2.8rem;
             margin: 1.6rem 1.6rem;
             background: var(--second-main-color);
             border-radius: 3rem;
-            box-shadow: 0 0 1rem var(--second-main-color);
+            /*box-shadow: 0 0 1rem var(--second-main-color);*/
             font-size: 1.6rem;
             color: var(--second-bg-color);
             letter-spacing: .1rem;
@@ -172,7 +184,7 @@
         .btn-contact {
             display: inline-block;
             padding: 1rem 2.8rem;
-            margin: ;
+            margin: 1.6rem 1.6rem;
             background: transparent;
             border-radius: 3rem;
             border: .2rem solid var(--second-main-color);
@@ -189,106 +201,12 @@
             background: var(--main-color);
             color: var(--second-bg-color);
         }
-        /***********   ABOUT V1 *************** 
-
-.about {
-    width: 100%;
-    padding: 90px 0px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--second-bg-color);
-}
-
-.about-img {
-    margin: auto;
-    padding: auto;
-    width: 25vw;
-}
-
-img {
-    width: 100%;
-}
-
-.main {
-    width: 1130px;
-    max-width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-/*
-.about-content {
-    margin: auto;
-    padding: auto;
-    width: 50%;
-}
-
-.heading {
-
-    text-align: center;
-    font-size: 4.5rem;
-}
-
-.about-content h2 {
-    text-align: left;
-}
-
-.about-content h3 {
-    font-size: 2.6rem;
-}
-
-.about-content p {
-
-    text-align: left;
-    font-size: 1.4rem;
-}
-
-table {
-    text-align: left;
-    font-size: 1.4rem;
-}
-
-th {
-    text-align: left;
-   
-}
-
-td {
-    padding: 8px 0;
-}
-
-.tab-size {
-    width: 20%;
-}
-
-*/
-        /*
-.about-icon a {
-    display: inline-flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 30rem;
-    height: 15rem;
-    background: transparent;
-    font-size: 10rem;
-    color: var(--text-color);
-    margin: 3rem 2rem 3rem 0;
-    padding: 5% 15%;
-    transition: .5s ease;
-}
-
-.about-icon a:hover {
-    background-color: transparent;
-    color: var(--main-color);
-}*/
+        /***************  about ***************/
         
         .about {
             width: 100%;
-            padding: 90px 0px;
-            margin: 0 auto;
+            padding: 95px 0px;
+            /*margin: 0 auto;*/
             display: grid;
             justify-content: center;
             align-items: center;
@@ -307,9 +225,11 @@ td {
         }
         
         .about-content {
+            display: flex;
             margin: auto;
             padding: auto;
-            width: 50%;
+            width: 80%;
+            column-gap: 5%;
         }
         
         .heading {
@@ -322,14 +242,18 @@ td {
             line-height: 1.2;
         }
         
-        .about-content h3 {
-            font-size: 2.6rem;
-        }
-        
         .about-content p {
             text-align: justify;
-            margin: 2rem 0 5rem;
+            margin: 1.6rem 0 5rem;
             font-size: 1.4rem;
+        }
+        
+        .about-text {
+            width: 50%;
+        }
+        
+        .about-info {
+            width: 50%;
         }
         /**** project ******/
         
@@ -539,10 +463,10 @@ td {
                 flex-direction: column;
             }
             .home-content h3 {
-                font-size: 2rem;
+                font-size: 1.6rem;
             }
             .home-content h1 {
-                font-size: 4rem;
+                font-size: 3rem;
             }
             .home-img img {
                 width: 50vw;
@@ -567,12 +491,18 @@ td {
         }
         
         @media (max-width: 617px) {
+            .social-media {
+                display: none;
+            }
             .project-container {
                 grid-template-columns: 1fr;
             }
         }
         
         @media (max-width: 450px) {
+            .social-media {
+                display: none;
+            }
             html {
                 font-size: 50%;
             }
@@ -583,6 +513,9 @@ td {
         }
         
         @media (max-width: 365px) {
+            .social-media {
+                display: none;
+            }
             .home-img img {
                 width: 90vw;
             }
