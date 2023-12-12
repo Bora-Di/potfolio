@@ -12,15 +12,10 @@
         
          :root {
             --bg-color: #000000;
-            --second-bg-color: #11100e;
-            --text-color: #cac7c0;
-            --main-color: #5e4429;
-            --second-main-color: #7f7367;
-            /* --bg-color: #17171b;
-            --second-bg-color: #0a0a0a;
+            --second-bg-color: rgb(15, 15, 15);
             --text-color: #fff;
-            --main-color: #28ad60;
-            --second-main-color: #1f9242d7;*/
+            --main-color: #1DA1F2;
+            --second-main-color: #2390d3;
             /* --main-color: #8860e4;*/
             /*--main-color: #911b1b;*/
             /* --main-color: #be323b;*/
@@ -97,20 +92,20 @@
         
         .home {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             width: 80%;
         }
         
         .home-img img {
-            margin-left: 0%;
-            width: 60%;
+            width: 40%;
         }
         
         .home-content {
+            padding-right: 40%;
             margin-bottom: 10%;
             height: auto;
-            width: 40%;
+            width: auto;
         }
         
         .home-content h3 {
@@ -166,7 +161,7 @@
             margin: 1.6rem 1.6rem;
             background: var(--second-main-color);
             border-radius: 3rem;
-            /*box-shadow: 0 0 1rem var(--second-main-color);*/
+            box-shadow: 0 0 1rem var(--second-main-color);
             font-size: 1.6rem;
             color: var(--second-bg-color);
             letter-spacing: .1rem;
