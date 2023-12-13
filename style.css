@@ -16,9 +16,6 @@
             --text-color: #fff;
             --main-color: #1DA1F2;
             --second-main-color: #2390d3;
-            /* --main-color: #8860e4;*/
-            /*--main-color: #911b1b;*/
-            /* --main-color: #be323b;*/
             /* --main-color: #fed23d;*/
         }
         
@@ -92,7 +89,7 @@
         
         .home {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             width: 80%;
         }
@@ -102,8 +99,8 @@
         }
         
         .home-content {
-            padding-right: 40%;
             margin-bottom: 10%;
+            margin-left: 10%;
             height: auto;
             width: auto;
         }
@@ -134,8 +131,8 @@
         }
         
         .social-media a {
-            display: flex;
-            right: 0;
+            display: inline-flex;
+            /* right: 0;*/
             justify-content: center;
             align-items: center;
             width: 3rem;
@@ -401,127 +398,4 @@
         .footer-icon a i {
             font-size: 2rem;
             color: var(--second-bg-color);
-        }
-        /********  MEDIA RESPO **********/
-        
-        @media (max-width: 1200px) {
-            html {
-                font-size: 55%;
-            }
-        }
-        
-        @media (max-width: 991) {
-            .header {
-                padding: 2rem 3%;
-            }
-            section {
-                padding: 10rem 3% 2rem;
-            }
-            .skills {
-                padding-bottom: 7rem;
-            }
-            .project {
-                padding: 7rem;
-            }
-            .contact {
-                min-height: auto;
-            }
-            .footer {
-                padding: 2rem 3%;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            #menu_icon {
-                display: block;
-            }
-            .navbar {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                padding: 1rem 3%;
-                background: var(--bg-color);
-                border-top: .1rem solid rgba(0, 0, 0, .2);
-                box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
-                display: none;
-            }
-            .navbar.active {
-                display: block;
-            }
-            .navbar a {
-                display: block;
-                font-size: 1.8rem;
-                margin: 3rem 0;
-            }
-            .home {
-                flex-direction: column;
-            }
-            .home-content h3 {
-                font-size: 1.6rem;
-            }
-            .home-content h1 {
-                font-size: 3rem;
-            }
-            .home-img img {
-                width: 50vw;
-                margin-top: 4rem;
-            }
-            .about {
-                flex-direction: column-reverse;
-            }
-            .about img {
-                width: 50vw;
-                margin-top: 4rem;
-            }
-            .skills h2 {
-                margin-bottom: .3rem;
-            }
-            .project h2 {
-                margin-bottom: 3rem;
-            }
-            .project-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 617px) {
-            .social-media {
-                display: none;
-            }
-            .project-container {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 450px) {
-            .social-media {
-                display: none;
-            }
-            html {
-                font-size: 50%;
-            }
-            .contact form .input-box input {
-                width: 100%;
-                font-size: 1.2rem;
-            }
-        }
-        
-        @media (max-width: 365px) {
-            .social-media {
-                display: none;
-            }
-            .home-img img {
-                width: 90vw;
-            }
-            .about-img img {
-                width: 40vw;
-            }
-            .footer {
-                flex-direction: column-reverse;
-            }
-            .footer p {
-                text-align: center;
-                margin-top: 2rem;
-            }
         }
