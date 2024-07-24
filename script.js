@@ -51,3 +51,54 @@ ScrollReveal({
 
 ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
 ScrollReveal().reveal('.home-img, .about , .project-box, .contact form', { origin: 'bottom' });
+
+
+/********************    load button ********************/
+$(document).ready(function(){
+    $(".project-box").slice(0, 4).show(); // Show first 3 items
+    $("#loadMore").on("click", function(e){
+        e.preventDefault();
+        $(".project-box:hidden").slice(0, 3).slideDown(); // Show next 3 hidden items
+        if($(".project-box:hidden").length == 0) {
+            $("#loadMore").text("No Content").addClass("noContent");
+        }
+    });
+});
+
+/********************    filter ********************/
+
+window.onload = function() {
+    filterSelection("all");
+}
+
+function filterSelection(c) {
+    var x, y, i, j;
+    x = document.getElementsByClassName("image");
+    y = document.getElementsByClassName("tab");
+
+    for (j = 0; j < y.length; j++) {
+        RemoveClass(y[j], "active");
+        if (y[j].className.indexOf(c) > -1) {
+            AddClass(y[j], "active");
+        }
+    }
+
+    if (c == "all") {
+        c = "";
+    }
+
+    for (i = 0; i < x.length; i++) {
+        RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) {
+            AddClass(x[i], "show");
+        }
+    }
+}
+
+function AddClass(element, name) {
+    element.classList.add(name);
+}
+
+function RemoveClass(element, name) {
+    element.classList.remove(name);
+}
