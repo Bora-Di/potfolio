@@ -42,7 +42,7 @@
             top: 0%;
             left: 0%;
             width: 100%;
-            height: 80px;
+            height:00px;
             padding: 3rem 7.5%;
             background: var(--bg-color);
             display: flex;
@@ -56,12 +56,12 @@
         }
         
         .logo img {
-            height: 180px;
+            height: 100px;
             width: auto;
         }
         
         .navbar a {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--text-color);
             margin-left: 4rem;
             transition: .3s;
@@ -103,7 +103,9 @@
         }
         
         .home-content {
-            width: 80%;
+            width: 90%;
+            justify-content: center;
+            align-items: center;
         }
         
         .home-content h3 {
@@ -131,16 +133,16 @@
         }
         
         .social-media a {
-            display: grid;
+            display: inline-flex;
             right: 0;
             justify-content: center;
             align-items: center;
-            width: 3rem;
-            height: 3rem;
+            width: 4rem;
+            height: 4rem;
             background: transparent;
             border: .2rem solid var(--main-color);
             border-radius: 50%;
-            font-size: 2rem;
+            font-size: 3rem;
             color: var(--main-color);
             margin: 2.5rem 1.5rem 2.5rem 0;
             transition: .5s ease;
@@ -232,7 +234,7 @@
         }
         .about-text {
            padding: 20px; 
-            width: 50%;
+            width: 90%;
         }
 
         /*********  work *******/
@@ -267,8 +269,9 @@
     font-weight: 400;
     font-size: 15px;
     padding: 10px;
-    background: #ffffff3d;
+    border: 0.2rem solid var(--main-color);
     border-radius: 40px;
+    box-shadow: 0 0 0.5rem var(--main-color);
     cursor: pointer;
     color: white;
 }
@@ -302,8 +305,79 @@
     transform: scale(1.1);
 }
 
+/*********  reviews *******/
 
+.review_container{
+    max-width: 1170px;
+    margin: auto;
+    padding: 0 15px;
+}
 
+.review_header{
+    text-align: center;
+    margin-bottom: 50px;
+}
+.review_header .tittle{
+    font-size: 40px;
+    font-weight: 600;
+    text-transform: capitalize;
+    line-height: 1.2;
+}
+.review{
+    padding: 100px 0;
+    font-size: 15px;
+}
+.review_item{
+    background-color: var(--second-bg-color);
+    padding: 30px;
+    border-radius: 30px;
+}
+.review_item .info{
+    display: flex;
+    align-items: center;
+}
+.review_item img{
+    max-width:  80px;
+    border-radius: 50%;
+    margin-right: 20px;
+    background-color: #ffffffa6;
+    vertical-align: middle;
+}
+.review_item .name{
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: #fff;
+    line-height: 2;
+}
+.review_item .country{
+    font-size: 15px;
+    font-style: italic;
+    text-transform: capitalize;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.2;
+}
+.review_item p{
+    margin-top: 20px;
+    color: #bbbbbb;
+}
+.review_item .rating{
+    margin-top: 15px;
+    font-size: 14px;
+    color: #ffc400;
+}
+
+.review .swiper-pagination{
+    position: relative;
+    margin-top: 40px;
+    bottom: auto;
+}
+.review .swiper-pagination-bullet{
+    height: 12px;
+    width: 12px;
+    background-color: #ffffff;
+}
         /*********  contact *******/
 
         .contact h2 {
