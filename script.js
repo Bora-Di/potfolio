@@ -68,7 +68,6 @@ $(document).ready(function(){
 /********************    filter ********************/
 
 window.onload = function() {
-    // Show all images initially
     showAllImages();
 };
 
