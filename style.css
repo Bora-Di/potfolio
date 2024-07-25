@@ -539,6 +539,9 @@
                 margin-top: 4rem;
             }
             .about-content{
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
                 width: 90%;
             }
 
