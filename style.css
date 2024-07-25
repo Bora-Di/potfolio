@@ -211,9 +211,6 @@
             padding: auto;
             width: 25vw;
         }
-        
-        
-        
         .about-content {
             display: flex;
             flex-direction: row;
@@ -221,17 +218,13 @@
             padding: auto;
             width: 80%;
         }
-        
+    
         .heading {
             text-align: center;
             font-size: 4.5rem;
             font-family: "Shadows Into Light", cursive;
         }
-        
-        .about-content h2 {
-            text-align: left;
-            line-height: 1.2;
-        }
+       
         .about-content p {
             text-align: justify;
             margin: 1.6rem 0 5rem;
