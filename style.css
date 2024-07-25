@@ -1,5 +1,5 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Patrick Hand:wght@400..700&family=Patrick+Hand&display=swap');
 
         * {
             margin: 0;
@@ -44,7 +44,7 @@
             width: 100%;
             height:00px;
             padding: 3rem 7.5%;
-            background: var(--bg-color);
+            background: #00000080;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -67,8 +67,8 @@
             transition: .3s;
         }
         
-        .navbar a:hover,
-        .navbar a.active {
+        .navbar a:hover{
+            text-decoration: overline ;
             color: var(--main-color);
         }
         
@@ -93,13 +93,20 @@
          
         .home {
             display: flex;
+            flex-direction: row;
             justify-content: center;
             align-items: center;
+            background-image: url(images/cat2.png);
+            background-size: cover;
+            background-repeat: repeat;
+            background-attachment: fixed;
+            gap: 5%;
+
             
         }
-        
+     
         .home-img img {
-            width: 70%;
+            width: 90%;
         }
         
         .home-content {
@@ -116,7 +123,7 @@
         
         span {
             color: var(--main-color);
-            font-family: "Shadows Into Light", cursive;
+            font-family: "Patrick Hand", cursive;
         }
         
         .home-content h1 {
@@ -124,7 +131,7 @@
             margin-top: 5rem;
             font-size: 5rem;
             font-weight: 700;
-            font-family: "Shadows Into Light", cursive;
+            font-family: "Patrick Hand", cursive;
             line-height: 1.3;
         }
         
@@ -134,7 +141,6 @@
         
         .social-media a {
             display: inline-flex;
-            right: 0;
             justify-content: center;
             align-items: center;
             width: 4rem;
@@ -200,18 +206,16 @@
             width: 100%;
             padding: 95px 0px;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            flex-wrap: nowrap;
+            display: grid;
             justify-content: center;
             align-items: center;
             background: var(--second-bg-color);
         }
         
-        .about-img {
+        .about-img img{
             margin: auto;
             padding: auto;
-            width: 25vw;
+            width: 100%;
         }
         .about-content {
             display: flex;
@@ -224,17 +228,22 @@
         .heading {
             text-align: center;
             font-size: 4.5rem;
-            font-family: "Shadows Into Light", cursive;
+            font-family: "Patrick Hand", cursive;
         }
-       
+        .about-content h1{
+            font-size: 3rem;
+            line-height: 4;
+        }
+
         .about-content p {
             text-align: justify;
             margin: 1.6rem 0 5rem;
             font-size: 1.6rem;
+            line-height: 2;
         }
         .about-text {
            padding: 20px; 
-            width: 90%;
+            width: 70%;
         }
 
         /*********  work *******/
@@ -248,7 +257,7 @@
         
 .topbar{
     width: 100%;
-    height: 70px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items:center;
@@ -283,10 +292,12 @@
     color: #ffff;
 }
 .container{
+   
     position: relative;
     column-count: 4;
     padding: 20px;
     margin: 10% 5% 5% 5%;
+    
 }
 .image{
     display: none;
@@ -294,15 +305,19 @@
     overflow: hidden;
     border-radius: 50px;
 }
+
 .show{
     display: inline-block;
+    
 }
 .work img{
     width: 100%;
     transition: 0.25s ease-in-out;
 }
+
 .image:hover img{
-    transform: scale(1.1);
+    
+    transform: scale(1.5);
 }
 
 /*********  reviews *******/
@@ -459,6 +474,7 @@
             html {
                 font-size: 55%;
             }
+            
         }
         
         @media (max-width: 991) {
@@ -476,6 +492,9 @@
             }
             .contact {
                 min-height: auto;
+            }
+            .container{
+                column-count: 3;
             }
             .footer {
                 padding: 2rem 3%;
@@ -525,15 +544,13 @@
                 width: 50vw;
                 margin-top: 4rem;
             }
-            .skills h2 {
-                margin-bottom: .3rem;
+
+            .tab{
+                font-size: 10px;
             }
-            .project h2 {
-                margin-bottom: 3rem;
-            }
-            .project-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
+           .container{
+            column-count: 2;
+           }
         }
         
         @media (max-width: 617px) {
@@ -550,7 +567,11 @@
                 width: 100%;
                 font-size: 1.2rem;
             }
+            .container{
+                column-count: 1;
+               }
         }
+
         
         @media (max-width: 365px) {
             .home-img img {

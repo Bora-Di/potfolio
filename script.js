@@ -102,3 +102,5 @@ function AddClass(element, name) {
 function RemoveClass(element, name) {
     element.classList.remove(name);
 }
+
+
