@@ -197,11 +197,12 @@
         .about {
             width: 100%;
             padding: 95px 0px;
-            /*margin: 0 auto;*/
-            display: grid;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
             justify-content: center;
             align-items: center;
-            gap: 2rem;
             background: var(--second-bg-color);
         }
         
@@ -211,16 +212,14 @@
             width: 25vw;
         }
         
-        img {
-            width: 100%;
-        }
+        
         
         .about-content {
             display: flex;
+            flex-direction: row;
             margin: auto;
             padding: auto;
             width: 80%;
-            column-gap: 5%;
         }
         
         .heading {
@@ -232,21 +231,14 @@
         .about-content h2 {
             text-align: left;
             line-height: 1.2;
-            
         }
-
-        
         .about-content p {
             text-align: justify;
             margin: 1.6rem 0 5rem;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
         }
-        
         .about-text {
-            width: 50%;
-        }
-        
-        .about-info {
+           padding: 20px; 
             width: 50%;
         }
 
