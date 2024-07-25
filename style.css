@@ -538,12 +538,18 @@
                 width: 50vw;
                 margin-top: 4rem;
             }
-            .about {
-                flex-direction: column-reverse;
+            .about-content{
+                width: 90%;
+            }
+
+            .about p{
+                font-size: 12px;
+            }
+            .about h1{
+                font-size: 20px
             }
             .about img {
-                width: 50vw;
-                margin-top: 4rem;
+               display: none;
             }
 
             .tab{
