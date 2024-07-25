@@ -1,4 +1,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -7,7 +9,8 @@
             border: none;
             outline: none;
             scroll-behavior: smooth;
-            font-family: 'Poppins', sans-serif;
+            font-family: "Poppins", sans-serif;
+           
         }
         
          :root {
@@ -92,10 +95,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            
         }
         
         .home-img img {
-            width: 27vw;
+            width: 70%;
         }
         
         .home-content {
@@ -105,10 +109,12 @@
         .home-content h3 {
             font-size: 3rem;
             font-weight: 700;
+            
         }
         
         span {
             color: var(--main-color);
+            font-family: "Shadows Into Light", cursive;
         }
         
         .home-content h1 {
@@ -116,6 +122,7 @@
             margin-top: 5rem;
             font-size: 5rem;
             font-weight: 700;
+            font-family: "Shadows Into Light", cursive;
             line-height: 1.3;
         }
         
@@ -219,12 +226,15 @@
         .heading {
             text-align: center;
             font-size: 4.5rem;
+            font-family: "Shadows Into Light", cursive;
         }
         
         .about-content h2 {
             text-align: left;
             line-height: 1.2;
+            
         }
+
         
         .about-content p {
             text-align: justify;
