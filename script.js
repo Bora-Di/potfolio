@@ -68,7 +68,15 @@ $(document).ready(function(){
 /********************    filter ********************/
 
 window.onload = function() {
-    filterSelection("all");
+    // Show all images initially
+    showAllImages();
+};
+
+function showAllImages() {
+    var x = document.getElementsByClassName("image");
+    for (var i = 0; i < x.length; i++) {
+        x[i].style.display = "inline-block";
+    }
 }
 
 function filterSelection(c) {
@@ -89,8 +97,10 @@ function filterSelection(c) {
 
     for (i = 0; i < x.length; i++) {
         RemoveClass(x[i], "show");
-        if (x[i].className.indexOf(c) > -1) {
+        x[i].style.display = "none"; // Hide all images
+        if (x[i].className.indexOf(c) > -1 || c === "") {
             AddClass(x[i], "show");
+            x[i].style.display = "inline-block"; // Show filtered images
         }
     }
 }
