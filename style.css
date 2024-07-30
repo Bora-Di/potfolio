@@ -204,9 +204,10 @@ span {
 .about-content {
     display: flex;
     flex-direction: row;
+    max-width: 1170px;
     margin: auto;
-    padding: auto;
-    width: 80%;
+    padding: 0 15px;
+
 }
 
 .heading {
@@ -306,6 +307,14 @@ span {
 .image:hover img {
     transform: scale(1.5);
 }
+
+#load-more {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
 
 /* reviews section */
 .review_container {
