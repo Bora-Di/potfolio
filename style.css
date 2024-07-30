@@ -206,7 +206,7 @@ span {
     flex-direction: row;
     margin: auto;
     padding: auto;
-    width: 90%;
+    width: 80%;
 }
 
 .heading {
@@ -222,7 +222,7 @@ span {
 
 .about-content p {
     text-align: justify;
-    margin: 1.6rem 0 5rem;
+    margin: 1rem 0 4rem;
     font-size: 1.6rem;
     line-height: 2;
 }
@@ -545,7 +545,7 @@ span {
         font-size: 12px;
     }
     .about h1 {
-        font-size: 20px;
+        font-size: 15px;
     }
     .about img {
         display: none;
