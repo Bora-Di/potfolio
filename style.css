@@ -541,8 +541,7 @@ span {
         font-size: 4rem;
     }
     .home-img img {
-        width: 50vw;
-        margin-top: 4rem;
+       display: none;
     }
     .about-content {
         flex-wrap: wrap;
@@ -568,6 +567,9 @@ span {
     .topbar .tabs{
         flex-wrap: wrap;
         justify-content: center;
+    }
+    .review_item p{
+        font-size: 12px;
     }
 }
 
