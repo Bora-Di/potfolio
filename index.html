@@ -10,20 +10,24 @@
     <style>
         /* Base Styles */
         :root {
-            --bg-color: #0a0a0a;
-            --second-bg-color: #151515;
-            --text-color: #fff;
-            --main-color: #e63946;
-            --accent-color: #457b9d;
-            --light-accent: #a8dadc;
+            --bg-color: #ffffff;
+            --second-bg-color: #f8f9fa;
+            --text-color: #2d3436;
+            --main-color: #0984e3;
+            --accent-color: #00b894;
+            --light-accent: #74b9ff;
+            --dark-accent: #2d3436;
+            --border-color: #dfe6e9;
             --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --radius: 8px;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
         }
 
         html {
@@ -35,27 +39,34 @@
             background: var(--bg-color);
             color: var(--text-color);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         section {
-            min-height: 100vh;
-            padding: 10rem 5% 4rem;
+            padding: 10rem 5% 6rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .heading {
             text-align: center;
-            font-size: 4.5rem;
-            margin-bottom: 5rem;
+            font-size: 4rem;
+            margin-bottom: 6rem;
             position: relative;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .heading::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 60px;
             height: 4px;
             background: var(--main-color);
             border-radius: 2px;
@@ -65,25 +76,34 @@
             color: var(--main-color);
         }
 
+        .subheading {
+            font-size: 1.8rem;
+            color: var(--main-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
         .btn {
             display: inline-block;
-            padding: 1.2rem 3rem;
+            padding: 1.4rem 3.2rem;
             background: var(--main-color);
-            border-radius: 3rem;
+            border-radius: var(--radius);
             font-size: 1.6rem;
-            color: var(--text-color);
+            color: white;
             font-weight: 600;
             transition: var(--transition);
-            border: 2px solid var(--main-color);
+            border: none;
             cursor: pointer;
             text-decoration: none;
+            text-align: center;
         }
 
         .btn:hover {
-            background: transparent;
-            color: var(--main-color);
+            background: #0770c4;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.2);
+            box-shadow: 0 10px 20px rgba(9, 132, 227, 0.15);
         }
 
         .btn-outline {
@@ -94,7 +114,15 @@
 
         .btn-outline:hover {
             background: var(--main-color);
-            color: var(--text-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--accent-color);
+        }
+
+        .btn-secondary:hover {
+            background: #00a085;
         }
 
         /* Header Styles */
@@ -104,24 +132,39 @@
             left: 0;
             width: 100%;
             padding: 2rem 5%;
-            background: rgba(10, 10, 10, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
             transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .header.sticky {
             padding: 1.5rem 5%;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
         }
 
-        .logo img {
-            height: 60px;
-            width: auto;
-            transition: var(--transition);
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--dark-accent);
+        }
+
+        .logo span {
+            color: var(--main-color);
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
         }
 
         .navbar a {
@@ -130,6 +173,7 @@
             margin-left: 3.5rem;
             transition: var(--transition);
             position: relative;
+            font-weight: 500;
         }
 
         .navbar a::after {
@@ -153,8 +197,12 @@
             width: 100%;
         }
 
+        .navbar-cta {
+            margin-left: 4rem;
+        }
+
         #menu-icon {
-            font-size: 3.6rem;
+            font-size: 3rem;
             color: var(--text-color);
             display: none;
             cursor: pointer;
@@ -166,21 +214,9 @@
             justify-content: space-between;
             align-items: center;
             min-height: 100vh;
-            padding: 0 5%;
+            padding: 12rem 5% 8rem;
             position: relative;
             overflow: hidden;
-        }
-
-        .home::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('images/hero-bg.jpg') no-repeat center center/cover;
-            opacity: 0.1;
-            z-index: -1;
         }
 
         .home-content {
@@ -191,8 +227,9 @@
         .home-content h1 {
             font-size: 5.5rem;
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.1;
             margin-bottom: 2rem;
+            color: var(--dark-accent);
         }
 
         .home-content h1 span {
@@ -203,12 +240,14 @@
         .home-content p {
             font-size: 1.8rem;
             margin-bottom: 3rem;
-            line-height: 1.6;
+            line-height: 1.7;
+            color: #636e72;
+            max-width: 90%;
         }
 
         .home-img {
             position: relative;
-            width: 40%;
+            width: 45%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -216,15 +255,9 @@
 
         .home-img img {
             width: 100%;
-            max-width: 400px;
-            border-radius: 50%;
-            box-shadow: 0 0 50px rgba(230, 57, 70, 0.3);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            max-width: 500px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
         }
 
         .social-media {
@@ -239,19 +272,22 @@
             align-items: center;
             width: 4.5rem;
             height: 4.5rem;
-            background: transparent;
-            border: 2px solid var(--main-color);
-            border-radius: 50%;
-            font-size: 2.5rem;
+            background: var(--second-bg-color);
+            border-radius: var(--radius);
+            font-size: 2rem;
             color: var(--main-color);
             transition: var(--transition);
         }
 
         .social-media a:hover {
             background: var(--main-color);
-            color: var(--bg-color);
-            box-shadow: 0 0 15px var(--main-color);
+            color: white;
             transform: translateY(-5px);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 2rem;
         }
 
         /* About Section */
@@ -263,7 +299,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 5rem;
+            gap: 6rem;
         }
 
         .about-img {
@@ -274,9 +310,9 @@
 
         .about-img img {
             width: 100%;
-            max-width: 450px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
         }
 
         .about-text {
@@ -286,13 +322,14 @@
         .about-text h3 {
             font-size: 3rem;
             margin-bottom: 2rem;
-            color: var(--main-color);
+            color: var(--dark-accent);
         }
 
         .about-text p {
             font-size: 1.6rem;
             line-height: 1.8;
             margin-bottom: 2rem;
+            color: #636e72;
         }
 
         .skills {
@@ -303,11 +340,12 @@
         }
 
         .skill {
-            background: rgba(255, 255, 255, 0.05);
+            background: white;
             padding: 1rem 2rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             font-size: 1.4rem;
             border-left: 3px solid var(--main-color);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
 
         /* Services Section */
@@ -322,18 +360,18 @@
         }
 
         .service-box {
-            background: var(--second-bg-color);
+            background: white;
             padding: 4rem 3rem;
-            border-radius: 20px;
+            border-radius: var(--radius);
             text-align: center;
             transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
         }
 
         .service-box:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border-color: var(--main-color);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .service-box i {
@@ -345,16 +383,18 @@
         .service-box h3 {
             font-size: 2.4rem;
             margin-bottom: 1.5rem;
+            color: var(--dark-accent);
         }
 
         .service-box p {
             font-size: 1.5rem;
             line-height: 1.6;
             margin-bottom: 2rem;
+            color: #636e72;
         }
 
         .service-price {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--main-color);
             margin-bottom: 2rem;
@@ -375,19 +415,21 @@
 
         .filter-btn {
             padding: 1rem 2.5rem;
-            background: transparent;
-            border: 2px solid var(--main-color);
+            background: white;
+            border: 1px solid var(--border-color);
             border-radius: 30px;
             color: var(--text-color);
             font-size: 1.5rem;
             cursor: pointer;
             transition: var(--transition);
+            font-weight: 500;
         }
 
         .filter-btn.active,
         .filter-btn:hover {
             background: var(--main-color);
-            color: var(--bg-color);
+            color: white;
+            border-color: var(--main-color);
         }
 
         .portfolio-container {
@@ -398,10 +440,11 @@
 
         .portfolio-box {
             position: relative;
-            border-radius: 15px;
+            border-radius: var(--radius);
             overflow: hidden;
             height: 300px;
             cursor: pointer;
+            box-shadow: var(--shadow);
         }
 
         .portfolio-box img {
@@ -412,7 +455,7 @@
         }
 
         .portfolio-box:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .portfolio-layer {
@@ -421,7 +464,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(transparent, var(--main-color));
+            background: linear-gradient(transparent, rgba(9, 132, 227, 0.8));
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -437,11 +480,13 @@
         .portfolio-layer h4 {
             font-size: 2.2rem;
             margin-bottom: 1rem;
+            color: white;
         }
 
         .portfolio-layer p {
             font-size: 1.4rem;
             margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .portfolio-layer a {
@@ -450,9 +495,9 @@
             align-items: center;
             width: 4rem;
             height: 4rem;
-            background: var(--text-color);
+            background: white;
             border-radius: 50%;
-            color: var(--bg-color);
+            color: var(--main-color);
             font-size: 2rem;
         }
 
@@ -468,16 +513,17 @@
         }
 
         .gig-box {
-            background: var(--second-bg-color);
-            border-radius: 20px;
+            background: white;
+            border-radius: var(--radius);
             overflow: hidden;
             transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
         }
 
         .gig-box:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .gig-img {
@@ -503,12 +549,14 @@
         .gig-content h3 {
             font-size: 2.2rem;
             margin-bottom: 1.5rem;
+            color: var(--dark-accent);
         }
 
         .gig-content p {
             font-size: 1.5rem;
             line-height: 1.6;
             margin-bottom: 2rem;
+            color: #636e72;
         }
 
         .gig-features {
@@ -520,10 +568,11 @@
             margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
+            color: #636e72;
         }
 
         .gig-features li i {
-            color: var(--main-color);
+            color: var(--accent-color);
             margin-right: 1rem;
             font-size: 1.2rem;
         }
@@ -555,11 +604,12 @@
         }
 
         .review-box {
-            background: var(--bg-color);
+            background: white;
             padding: 3rem;
-            border-radius: 20px;
+            border-radius: var(--radius);
             margin: 0 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
         }
 
         .review-header {
@@ -574,17 +624,21 @@
             border-radius: 50%;
             overflow: hidden;
             margin-right: 2rem;
+            background: var(--second-bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .review-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .review-img i {
+            font-size: 3rem;
+            color: var(--main-color);
         }
 
         .review-info h4 {
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
+            color: var(--dark-accent);
         }
 
         .review-info span {
@@ -596,6 +650,7 @@
             font-size: 1.5rem;
             line-height: 1.7;
             margin-bottom: 1.5rem;
+            color: #636e72;
         }
 
         .review-rating {
@@ -605,7 +660,7 @@
 
         .swiper-pagination-bullet {
             background: var(--text-color);
-            opacity: 0.5;
+            opacity: 0.3;
         }
 
         .swiper-pagination-bullet-active {
@@ -644,17 +699,20 @@
         .contact-text h3 {
             font-size: 2rem;
             margin-bottom: 0.5rem;
+            color: var(--dark-accent);
         }
 
         .contact-text p {
             font-size: 1.5rem;
-            color: #aaa;
+            color: #636e72;
         }
 
         .contact-form {
-            background: var(--second-bg-color);
+            background: white;
             padding: 3rem;
-            border-radius: 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
         }
 
         .input-box {
@@ -668,10 +726,17 @@
             padding: 1.5rem;
             font-size: 1.5rem;
             color: var(--text-color);
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--second-bg-color);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
             resize: none;
+            transition: var(--transition);
+        }
+
+        .input-box input:focus,
+        .input-box textarea:focus {
+            border-color: var(--main-color);
+            outline: none;
         }
 
         .input-box label {
@@ -680,7 +745,7 @@
             left: 1.5rem;
             transform: translateY(-50%);
             font-size: 1.5rem;
-            color: #aaa;
+            color: #636e72;
             pointer-events: none;
             transition: var(--transition);
         }
@@ -698,14 +763,15 @@
             left: 1rem;
             font-size: 1.2rem;
             color: var(--main-color);
-            background: var(--second-bg-color);
+            background: white;
             padding: 0 1rem;
         }
 
         /* Footer */
         .footer {
-            background: var(--second-bg-color);
+            background: var(--dark-accent);
             padding: 5rem 0 2rem;
+            color: white;
         }
 
         .footer-container {
@@ -735,6 +801,7 @@
             font-size: 1.5rem;
             line-height: 1.7;
             margin-bottom: 1.5rem;
+            color: #b2bec3;
         }
 
         .footer-links li {
@@ -743,7 +810,7 @@
 
         .footer-links a {
             font-size: 1.5rem;
-            color: #aaa;
+            color: #b2bec3;
             transition: var(--transition);
         }
 
@@ -763,16 +830,15 @@
             align-items: center;
             width: 4rem;
             height: 4rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             font-size: 2rem;
-            color: var(--text-color);
+            color: white;
             transition: var(--transition);
         }
 
         .footer-social a:hover {
             background: var(--main-color);
-            color: var(--bg-color);
             transform: translateY(-5px);
         }
 
@@ -784,7 +850,7 @@
 
         .footer-bottom p {
             font-size: 1.4rem;
-            color: #aaa;
+            color: #b2bec3;
         }
 
         /* Responsive Design */
@@ -823,26 +889,32 @@
                 left: 0;
                 width: 100%;
                 padding: 1rem 3%;
-                background: var(--bg-color);
-                border-top: 1px solid rgba(0, 0, 0, 0.2);
-                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+                background: white;
+                border-top: 1px solid var(--border-color);
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
                 display: none;
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             .navbar.active {
-                display: block;
+                display: flex;
             }
 
             .navbar a {
-                display: block;
-                font-size: 2rem;
-                margin: 3rem 0;
+                margin: 1.5rem 0;
+                font-size: 1.8rem;
+            }
+
+            .navbar-cta {
+                margin: 1.5rem 0 0;
             }
 
             .home {
                 flex-direction: column;
                 text-align: center;
                 gap: 5rem;
+                padding: 12rem 3% 8rem;
             }
 
             .home-content {
@@ -859,6 +931,16 @@
 
             .portfolio-container {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-group .btn {
+                width: 100%;
+                max-width: 250px;
             }
         }
 
@@ -885,7 +967,7 @@
     <!-- Header -->
     <header class="header">
         <div class="logo">
-            <a href="#home"><img src="images/logo1.png" alt="ArtmeBo Logo"></a>
+            <h1>Artme<span>Bo</span></h1>
         </div>
 
         <i class='bx bx-menu' id="menu-icon"></i>
@@ -897,47 +979,52 @@
             <a href="#portfolio">Portfolio</a>
             <a href="#gigs">Gigs</a>
             <a href="#reviews">Reviews</a>
-            <a href="#contact">Contact</a>
+            <a href="#contact" class="btn navbar-cta">Get Quote</a>
         </nav>
     </header>
 
     <!-- Home Section -->
     <section class="home" id="home">
         <div class="home-content">
-            <h1>Welcome to <span>ArtMeBo</span></h1>
-            <p>I'm a passionate illustrator and graphic designer with over 5 years of experience creating stunning visual art that brings ideas to life.</p>
+            <p class="subheading">Professional Illustrator & Designer</p>
+            <h1>Bringing Your <span>Creative Vision</span> to Life</h1>
+            <p>With over 5 years of experience, I specialize in creating stunning digital illustrations, custom portraits, and graphic designs that capture emotion and tell stories.</p>
             <div class="social-media">
                 <a href="https://www.linkedin.com/in/bouchra-houmaidi"><i class='bx bxl-linkedin'></i></a>
                 <a href="mailto:mbou7841@gmail.com"><i class='bx bxl-gmail'></i></a>
                 <a href="https://www.fiverr.com/artmebo"><i class="fab fa-fonticons-fi"></i></a>
                 <a href="#"><i class='bx bxl-instagram'></i></a>
             </div>
-            <a href="#portfolio" class="btn">View My Work</a>
-            <a href="#contact" class="btn btn-outline">Get In Touch</a>
+            <div class="btn-group">
+                <a href="#portfolio" class="btn">View Portfolio</a>
+                <a href="#contact" class="btn btn-outline">Start a Project</a>
+            </div>
         </div>
         <div class="home-img">
-            <img src="images/hero.png" alt="ArtmeBo Hero Image">
+            <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=658&q=80" alt="ArtmeBo Hero Image">
         </div>
     </section>
 
     <!-- About Section -->
     <section class="about" id="about">
-        <h2 class="heading">About <span>Me</span></h2>
-        <div class="about-content">
-            <div class="about-img">
-                <img src="images/aboutme.png" alt="About ArtmeBo">
-            </div>
-            <div class="about-text">
-                <h3>Creative Illustrator & Graphic Designer</h3>
-                <p>Hello! I'm a passionate freelance illustrator and graphic designer with more than five years of creative experience. I thrive on exploring diverse styles and processes, continuously seeking fresh ideas, and remaining committed to personal growth.</p>
-                <p>My goal is to craft artwork that brings joy and satisfaction to people's lives. I'm eager to connect and discuss your creative concepts. You can reach me at any time, and I'm excitedly anticipating your message. Let's collaborate to bring your visions to life!</p>
-                <div class="skills">
-                    <div class="skill">Digital Illustration</div>
-                    <div class="skill">Portrait Drawing</div>
-                    <div class="skill">Character Design</div>
-                    <div class="skill">Logo Design</div>
-                    <div class="skill">Graphic Design</div>
-                    <div class="skill">Custom Artwork</div>
+        <div class="container">
+            <h2 class="heading">About <span>Me</span></h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="About ArtmeBo">
+                </div>
+                <div class="about-text">
+                    <h3>Creative Professional with a Passion for Visual Storytelling</h3>
+                    <p>Hello! I'm a passionate freelance illustrator and graphic designer with more than five years of creative experience. I thrive on exploring diverse styles and processes, continuously seeking fresh ideas, and remaining committed to personal growth.</p>
+                    <p>My goal is to craft artwork that brings joy and satisfaction to people's lives. I'm eager to connect and discuss your creative concepts. You can reach me at any time, and I'm excitedly anticipating your message. Let's collaborate to bring your visions to life!</p>
+                    <div class="skills">
+                        <div class="skill">Digital Illustration</div>
+                        <div class="skill">Portrait Drawing</div>
+                        <div class="skill">Character Design</div>
+                        <div class="skill">Logo Design</div>
+                        <div class="skill">Graphic Design</div>
+                        <div class="skill">Custom Artwork</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -945,105 +1032,111 @@
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <h2 class="heading">My <span>Services</span></h2>
-        <div class="services-container">
-            <div class="service-box">
-                <i class="fas fa-paint-brush"></i>
-                <h3>Custom Portraits</h3>
-                <p>Beautifully crafted custom portraits from your photos, available in various styles including black and white, faceless, and minimalist.</p>
-                <div class="service-price">Starting at $50</div>
-                <a href="#contact" class="btn">Order Now</a>
-            </div>
-            <div class="service-box">
-                <i class="fas fa-palette"></i>
-                <h3>Digital Illustrations</h3>
-                <p>Unique digital illustrations for personal or commercial use, created with attention to detail and your specific requirements.</p>
-                <div class="service-price">Starting at $75</div>
-                <a href="#contact" class="btn">Order Now</a>
-            </div>
-            <div class="service-box">
-                <i class="fas fa-pencil-alt"></i>
-                <h3>Line Art & Doodles</h3>
-                <p>Elegant line art and creative doodles perfect for logos, branding, or personal projects with a clean and modern aesthetic.</p>
-                <div class="service-price">Starting at $40</div>
-                <a href="#contact" class="btn">Order Now</a>
+        <div class="container">
+            <h2 class="heading">My <span>Services</span></h2>
+            <div class="services-container">
+                <div class="service-box">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Custom Portraits</h3>
+                    <p>Beautifully crafted custom portraits from your photos, available in various styles including black and white, faceless, and minimalist.</p>
+                    <div class="service-price">Starting at $50</div>
+                    <a href="#contact" class="btn">Order Now</a>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-palette"></i>
+                    <h3>Digital Illustrations</h3>
+                    <p>Unique digital illustrations for personal or commercial use, created with attention to detail and your specific requirements.</p>
+                    <div class="service-price">Starting at $75</div>
+                    <a href="#contact" class="btn">Order Now</a>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-pencil-alt"></i>
+                    <h3>Line Art & Doodles</h3>
+                    <p>Elegant line art and creative doodles perfect for logos, branding, or personal projects with a clean and modern aesthetic.</p>
+                    <div class="service-price">Starting at $40</div>
+                    <a href="#contact" class="btn">Order Now</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Portfolio Section -->
     <section class="portfolio" id="portfolio">
-        <h2 class="heading">My <span>Portfolio</span></h2>
-        <div class="portfolio-filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="bw">Black & White</button>
-            <button class="filter-btn" data-filter="faceless">Faceless</button>
-            <button class="filter-btn" data-filter="lineart">Line Art</button>
-            <button class="filter-btn" data-filter="minimalist">Minimalist</button>
-        </div>
-        <div class="portfolio-container">
-            <!-- Portfolio items will be dynamically added here -->
+        <div class="container">
+            <h2 class="heading">My <span>Portfolio</span></h2>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="portraits">Portraits</button>
+                <button class="filter-btn" data-filter="illustrations">Illustrations</button>
+                <button class="filter-btn" data-filter="lineart">Line Art</button>
+                <button class="filter-btn" data-filter="minimalist">Minimalist</button>
+            </div>
+            <div class="portfolio-container">
+                <!-- Portfolio items will be dynamically added here -->
+            </div>
         </div>
     </section>
 
     <!-- Gigs Section -->
     <section class="gigs" id="gigs">
-        <h2 class="heading">My <span>Gigs</span></h2>
-        <div class="gigs-container">
-            <div class="gig-box">
-                <div class="gig-img">
-                    <img src="images/bw.png" alt="Black and White Portrait">
-                </div>
-                <div class="gig-content">
-                    <h3>Black & White Portrait</h3>
-                    <p>Elegant black and white custom portrait from your photo with artistic shading and details.</p>
-                    <ul class="gig-features">
-                        <li><i class="fas fa-check"></i> High-resolution digital file</li>
-                        <li><i class="fas fa-check"></i> 2 revisions included</li>
-                        <li><i class="fas fa-check"></i> Delivery within 3-5 days</li>
-                        <li><i class="fas fa-check"></i> Personal or commercial use</li>
-                    </ul>
-                    <div class="gig-price">
-                        <div class="price">$50</div>
-                        <a href="#contact" class="btn">Order Now</a>
+        <div class="container">
+            <h2 class="heading">My <span>Gigs</span></h2>
+            <div class="gigs-container">
+                <div class="gig-box">
+                    <div class="gig-img">
+                        <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=658&q=80" alt="Black and White Portrait">
+                    </div>
+                    <div class="gig-content">
+                        <h3>Black & White Portrait</h3>
+                        <p>Elegant black and white custom portrait from your photo with artistic shading and details.</p>
+                        <ul class="gig-features">
+                            <li><i class="fas fa-check"></i> High-resolution digital file</li>
+                            <li><i class="fas fa-check"></i> 2 revisions included</li>
+                            <li><i class="fas fa-check"></i> Delivery within 3-5 days</li>
+                            <li><i class="fas fa-check"></i> Personal or commercial use</li>
+                        </ul>
+                        <div class="gig-price">
+                            <div class="price">$50</div>
+                            <a href="#contact" class="btn">Order Now</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="gig-box">
-                <div class="gig-img">
-                    <img src="images/faceless.png" alt="Faceless Portrait">
-                </div>
-                <div class="gig-content">
-                    <h3>Faceless Portrait</h3>
-                    <p>Modern faceless portrait that captures emotion and personality without showing facial features.</p>
-                    <ul class="gig-features">
-                        <li><i class="fas fa-check"></i> Unique artistic style</li>
-                        <li><i class="fas fa-check"></i> 3 revisions included</li>
-                        <li><i class="fas fa-check"></i> Delivery within 4-6 days</li>
-                        <li><i class="fas fa-check"></i> Perfect for social media</li>
-                    </ul>
-                    <div class="gig-price">
-                        <div class="price">$65</div>
-                        <a href="#contact" class="btn">Order Now</a>
+                <div class="gig-box">
+                    <div class="gig-img">
+                        <img src="https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Faceless Portrait">
+                    </div>
+                    <div class="gig-content">
+                        <h3>Faceless Portrait</h3>
+                        <p>Modern faceless portrait that captures emotion and personality without showing facial features.</p>
+                        <ul class="gig-features">
+                            <li><i class="fas fa-check"></i> Unique artistic style</li>
+                            <li><i class="fas fa-check"></i> 3 revisions included</li>
+                            <li><i class="fas fa-check"></i> Delivery within 4-6 days</li>
+                            <li><i class="fas fa-check"></i> Perfect for social media</li>
+                        </ul>
+                        <div class="gig-price">
+                            <div class="price">$65</div>
+                            <a href="#contact" class="btn">Order Now</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="gig-box">
-                <div class="gig-img">
-                    <img src="images/lineart.png" alt="Line Art Illustration">
-                </div>
-                <div class="gig-content">
-                    <h3>Line Art Illustration</h3>
-                    <p>Clean and elegant line art illustration perfect for logos, branding, or personal projects.</p>
-                    <ul class="gig-features">
-                        <li><i class="fas fa-check"></i> Vector file included</li>
-                        <li><i class="fas fa-check"></i> 2 revisions included</li>
-                        <li><i class="fas fa-check"></i> Delivery within 2-4 days</li>
-                        <li><i class="fas fa-check"></i> Commercial license available</li>
-                    </ul>
-                    <div class="gig-price">
-                        <div class="price">$40</div>
-                        <a href="#contact" class="btn">Order Now</a>
+                <div class="gig-box">
+                    <div class="gig-img">
+                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Line Art Illustration">
+                    </div>
+                    <div class="gig-content">
+                        <h3>Line Art Illustration</h3>
+                        <p>Clean and elegant line art illustration perfect for logos, branding, or personal projects.</p>
+                        <ul class="gig-features">
+                            <li><i class="fas fa-check"></i> Vector file included</li>
+                            <li><i class="fas fa-check"></i> 2 revisions included</li>
+                            <li><i class="fas fa-check"></i> Delivery within 2-4 days</li>
+                            <li><i class="fas fa-check"></i> Commercial license available</li>
+                        </ul>
+                        <div class="gig-price">
+                            <div class="price">$40</div>
+                            <a href="#contact" class="btn">Order Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1052,116 +1145,122 @@
 
     <!-- Reviews Section -->
     <section class="reviews" id="reviews">
-        <h2 class="heading">Client <span>Reviews</span></h2>
-        <div class="reviews-container">
-            <div class="swiper review-slider">
-                <div class="swiper-wrapper">
-                    <!-- Review items will be dynamically added here -->
+        <div class="container">
+            <h2 class="heading">Client <span>Reviews</span></h2>
+            <div class="reviews-container">
+                <div class="swiper review-slider">
+                    <div class="swiper-wrapper">
+                        <!-- Review items will be dynamically added here -->
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
-                <div class="swiper-pagination"></div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-        <h2 class="heading">Contact <span>Me</span></h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="contact-box">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div class="contact-text">
-                        <h3>Location</h3>
-                        <p>Available for remote work worldwide</p>
+        <div class="container">
+            <h2 class="heading">Contact <span>Me</span></h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-box">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-text">
+                            <h3>Location</h3>
+                            <p>Available for remote work worldwide</p>
+                        </div>
+                    </div>
+                    <div class="contact-box">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <p>mbou7841@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-box">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-text">
+                            <h3>Phone</h3>
+                            <p>Available upon request</p>
+                        </div>
+                    </div>
+                    <div class="contact-box">
+                        <i class="fab fa-fiverr"></i>
+                        <div class="contact-text">
+                            <h3>Fiverr</h3>
+                            <p>artmebo</p>
+                        </div>
                     </div>
                 </div>
-                <div class="contact-box">
-                    <i class="fas fa-envelope"></i>
-                    <div class="contact-text">
-                        <h3>Email</h3>
-                        <p>mbou7841@gmail.com</p>
+                <form class="contact-form">
+                    <div class="input-box">
+                        <input type="text" id="name" required>
+                        <label for="name">Your Name</label>
                     </div>
-                </div>
-                <div class="contact-box">
-                    <i class="fas fa-phone"></i>
-                    <div class="contact-text">
-                        <h3>Phone</h3>
-                        <p>Available upon request</p>
+                    <div class="input-box">
+                        <input type="email" id="email" required>
+                        <label for="email">Your Email</label>
                     </div>
-                </div>
-                <div class="contact-box">
-                    <i class="fab fa-fiverr"></i>
-                    <div class="contact-text">
-                        <h3>Fiverr</h3>
-                        <p>artmebo</p>
+                    <div class="input-box">
+                        <input type="text" id="subject" required>
+                        <label for="subject">Subject</label>
                     </div>
-                </div>
+                    <div class="input-box">
+                        <textarea id="message" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
             </div>
-            <form class="contact-form">
-                <div class="input-box">
-                    <input type="text" required>
-                    <label>Your Name</label>
-                </div>
-                <div class="input-box">
-                    <input type="email" required>
-                    <label>Your Email</label>
-                </div>
-                <div class="input-box">
-                    <input type="text" required>
-                    <label>Subject</label>
-                </div>
-                <div class="input-box">
-                    <textarea required></textarea>
-                    <label>Your Message</label>
-                </div>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-box">
-                <h3>ArtmeBo</h3>
-                <p>Freelance illustrator and graphic designer creating beautiful, custom artwork that brings your ideas to life.</p>
-                <div class="footer-social">
-                    <a href="https://www.linkedin.com/in/bouchra-houmaidi"><i class='bx bxl-linkedin'></i></a>
-                    <a href="mailto:mbou7841@gmail.com"><i class='bx bxl-gmail'></i></a>
-                    <a href="https://www.fiverr.com/artmebo"><i class="fab fa-fonticons-fi"></i></a>
-                    <a href="#"><i class='bx bxl-instagram'></i></a>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-box">
+                    <h3>ArtmeBo</h3>
+                    <p>Freelance illustrator and graphic designer creating beautiful, custom artwork that brings your ideas to life.</p>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/in/bouchra-houmaidi"><i class='bx bxl-linkedin'></i></a>
+                        <a href="mailto:mbou7841@gmail.com"><i class='bx bxl-gmail'></i></a>
+                        <a href="https://www.fiverr.com/artmebo"><i class="fab fa-fonticons-fi"></i></a>
+                        <a href="#"><i class='bx bxl-instagram'></i></a>
+                    </div>
+                </div>
+                <div class="footer-box">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#gigs">Gigs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#gigs">Custom Portraits</a></li>
+                        <li><a href="#gigs">Digital Illustrations</a></li>
+                        <li><a href="#gigs">Line Art</a></li>
+                        <li><a href="#gigs">Character Design</a></li>
+                        <li><a href="#gigs">Logo Design</a></li>
+                    </ul>
+                </div>
+                <div class="footer-box">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> mbou7841@gmail.com</p>
+                        <p><i class="fab fa-fiverr"></i> artmebo</p>
+                    </div>
                 </div>
             </div>
-            <div class="footer-box">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#gigs">Gigs</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p>Copyright &copy; 2023 ArtmeBo | All Rights Reserved</p>
             </div>
-            <div class="footer-box">
-                <h3>Services</h3>
-                <ul class="footer-links">
-                    <li><a href="#gigs">Custom Portraits</a></li>
-                    <li><a href="#gigs">Digital Illustrations</a></li>
-                    <li><a href="#gigs">Line Art</a></li>
-                    <li><a href="#gigs">Character Design</a></li>
-                    <li><a href="#gigs">Logo Design</a></li>
-                </ul>
-            </div>
-            <div class="footer-box">
-                <h3>Contact Info</h3>
-                <div class="contact-info">
-                    <p><i class="fas fa-envelope"></i> mbou7841@gmail.com</p>
-                    <p><i class="fab fa-fiverr"></i> artmebo</p>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>Copyright &copy; 2023 ArtmeBo | All Rights Reserved</p>
         </div>
     </footer>
 
@@ -1190,18 +1289,18 @@
         // Portfolio Filter
         const filterButtons = document.querySelectorAll('.filter-btn');
         const portfolioItems = [
-            { category: 'bw', img: 'images/bw.png', title: 'Black & White Portrait', desc: 'Elegant portrait with dramatic shading' },
-            { category: 'bw', img: 'images/bw1.png', title: 'Character Study', desc: 'Detailed character illustration' },
-            { category: 'faceless', img: 'images/1.png', title: 'Faceless Couple', desc: 'Modern faceless portrait' },
-            { category: 'faceless', img: 'images/2.png', title: 'Family Portrait', desc: 'Minimalist family illustration' },
-            { category: 'lineart', img: 'images/la1.png', title: 'Floral Line Art', desc: 'Elegant floral illustration' },
-            { category: 'lineart', img: 'images/la2.png', title: 'Animal Sketch', desc: 'Detailed animal line drawing' },
-            { category: 'minimalist', img: 'images/boy.png', title: 'Minimalist Portrait', desc: 'Clean and simple illustration' },
-            { category: 'minimalist', img: 'images/girl.png', title: 'Character Design', desc: 'Stylized character artwork' },
-            { category: 'bw', img: 'images/bw3.png', title: 'Dramatic Portrait', desc: 'High contrast black and white' },
-            { category: 'faceless', img: 'images/3.png', title: 'Abstract Portrait', desc: 'Creative interpretation' },
-            { category: 'lineart', img: 'images/la3.png', title: 'Botanical Art', desc: 'Nature-inspired line work' },
-            { category: 'minimalist', img: 'images/flower.png', title: 'Minimalist Flower', desc: 'Simple floral design' }
+            { category: 'portraits', img: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=658&q=80', title: 'Black & White Portrait', desc: 'Elegant portrait with dramatic shading' },
+            { category: 'portraits', img: 'https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80', title: 'Character Study', desc: 'Detailed character illustration' },
+            { category: 'portraits', img: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80', title: 'Faceless Couple', desc: 'Modern faceless portrait' },
+            { category: 'illustrations', img: 'https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80', title: 'Family Portrait', desc: 'Minimalist family illustration' },
+            { category: 'lineart', img: 'https://images.unsplash.com/photo-1578301978018-3005759f48f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=684&q=80', title: 'Floral Line Art', desc: 'Elegant floral illustration' },
+            { category: 'lineart', img: 'https://images.unsplash.com/photo-1579762715459-5a068c289fda?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=749&q=80', title: 'Animal Sketch', desc: 'Detailed animal line drawing' },
+            { category: 'minimalist', img: 'https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80', title: 'Minimalist Portrait', desc: 'Clean and simple illustration' },
+            { category: 'minimalist', img: 'https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80', title: 'Character Design', desc: 'Stylized character artwork' },
+            { category: 'portraits', img: 'https://images.unsplash.com/photo-1579762715122-02046150b0c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80', title: 'Dramatic Portrait', desc: 'High contrast black and white' },
+            { category: 'illustrations', img: 'https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80', title: 'Abstract Portrait', desc: 'Creative interpretation' },
+            { category: 'lineart', img: 'https://images.unsplash.com/photo-1578301978018-3005759f48f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=684&q=80', title: 'Botanical Art', desc: 'Nature-inspired line work' },
+            { category: 'minimalist', img: 'https://images.unsplash.com/photo-1579762715459-5a068c289fda?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=749&q=80', title: 'Minimalist Flower', desc: 'Simple floral design' }
         ];
 
         const portfolioContainer = document.querySelector('.portfolio-container');
@@ -1250,36 +1349,31 @@
                 name: 'Nadia A.',
                 location: 'UK',
                 text: 'Bouchra has been an absolute angel, very kind and quick to the editing. I wanted a portrait for my brother for his birthday, but adding extra thing to it. Although the quality of the picture was poor, and she had to use her skill to add things, she produced a masterpiece. I love it.',
-                rating: 5,
-                img: 'images/woman.png'
+                rating: 5
             },
             {
                 name: 'James A.',
                 location: 'USA',
                 text: 'Artmebo was so awesome the whole experience!! She was very patient, caring and understanding with me. I was ready to give up, but she kept trying until she got my approval. She brought my vision to life and I am very grateful for her. Thank you so much Artmebo!',
-                rating: 5,
-                img: 'images/man.png'
+                rating: 5
             },
             {
                 name: 'Meler D.',
                 location: 'UK',
                 text: 'Loved to work with Bouchra Art! Very professional and beautiful illustrations and on top that great communication and understanding. Hope to work with her in the future again :)',
-                rating: 5,
-                img: 'images/woman.png'
+                rating: 5
             },
             {
                 name: 'Melissa M.',
                 location: 'USA',
                 text: 'Wonderful experience, very professional and extremely talented! I will be using Artmebo\'s service again!',
-                rating: 5,
-                img: 'images/woman.png'
+                rating: 5
             },
             {
                 name: 'Katharina L.',
                 location: 'Belgium',
                 text: 'Very great person to work with! Great job awesome experience. Highly recommended',
-                rating: 5,
-                img: 'images/woman.png'
+                rating: 5
             }
         ];
 
@@ -1296,7 +1390,7 @@
                     <div class="review-box">
                         <div class="review-header">
                             <div class="review-img">
-                                <img src="${review.img}" alt="${review.name}">
+                                <i class="fas fa-user"></i>
                             </div>
                             <div class="review-info">
                                 <h4>${review.name}</h4>
