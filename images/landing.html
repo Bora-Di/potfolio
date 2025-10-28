@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtMeBo | Dark & Moody Illustrator Portfolio</title>
+    <meta name="description" content="Professional digital illustrator specializing in portraits, line art, and custom designs">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Unica+One&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    
+    <style>
+        :root {
+            --primary: #FF4D6D;
+            --primary-dark: #D90429;
+            --secondary: #8D99AE;
+            --dark: #0F0F13;
+            --darker: #0A0A0D;
+            --light: #EDF2F4;
+            --accent: #7B2CBF;
+            --text: #EDF2F4;
+            --text-secondary: #8D99AE;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Manrope', sans-serif;
+            color: var(--text);
+            background-color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Unica One', cursive;
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: var(--dark);
+            box-shadow: 0 4px 20px rgba(255, 77, 109, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(217, 4, 41, 0.4);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+        
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--darker);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .preloader__circle {
+            width: 80px;
+            height: 80px;
+            border: 5px solid rgba(255, 77, 109, 0.2);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 2rem;
+        }
+        
+        .preloader__logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Unica One', cursive;
+            letter-spacing: 3px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 1000;
+            transition: var(--transition);
+            background: rgba(15, 15, 19, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        header.scrolled {
+            padding: 1rem 0;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-family: 'Unica One', cursive;
+            letter-spacing: 3px;
+            color: var(--text);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+        
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 10rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at bottom, var(--darker) 0%, var(--dark) 100%);
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(to right, var(--text) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 500px;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-social {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .hero-social a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
+        }
+        
+        .hero-social a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .hero-image {
+            position: absolute;
+            right: 5%;
+            bottom: 0;
+            width: 45%;
+            max-width: 700px;
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.5));
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.9;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+        
+        /* About Section */
+        .about {
+            padding: 8rem 0;
+            background: var(--darker);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 80vh;
+            height: 80vh;
+            background: radial-gradient(circle, rgba(255,77,109,0.05) 0%, rgba(255,77,109,0) 70%);
+            z-index: 1;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 5rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent 0%, var(--primary) 50%, transparent 100%);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .about-desc {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+        
+        .about-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .skill {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+        
+        .skill:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.02);
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            padding: 8rem 0;
+            background: var(--dark);
+        }
+        
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary);
+            color: var(--dark);
+            border-color: var(--primary);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .portfolio-img {
+            height: 350px;
+            width: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(15, 15, 19, 0.9), transparent);
+            color: white;
+        }
+        
+        .portfolio-category {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .portfolio-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 8rem 0;
+            background: var(--darker);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            right: -20%;
+            width: 80vh;
+            height: 80vh;
+            background: radial-gradient(circle, rgba(255,77,109,0.05) 0%, rgba(255,77,109,0) 70%);
+            z-index: 1;
+        }
+        
+        .testimonials-slider {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .testimonial {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 1rem;
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--primary);
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+        
+        .testimonial-role {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .testimonial-rating {
+            color: var(--primary);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .swiper-pagination-bullet {
+            background: var(--text-secondary);
+            opacity: 0.5;
+            width: 10px;
+            height: 10px;
+            transition: var(--transition);
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: var(--primary);
+            opacity: 1;
+            transform: scale(1.2);
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 8rem 0;
+            background: var(--dark);
+            text-align: center;
+        }
+        
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: var(--text-secondary);
+        }
+        
+        .contact-email {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-email a {
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .contact-email a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .contact-social a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+        
+        .contact-social a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--darker);
+            color: var(--text-secondary);
+            padding: 5rem 0 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-family: 'Unica One', cursive;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+        
+        .footer-logo span {
+            color: var(--primary);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+        
+        .footer-copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+            
+            .hero-image {
+                width: 40%;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero {
+                padding-top: 12rem;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .hero-image {
+                position: relative;
+                width: 100%;
+                margin-top: 3rem;
+                right: auto;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                margin-top: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--darker);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .hero {
+                text-align: center;
+            }
+            
+            .hero-content {
+                margin: 0 auto;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .hero-social {
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader__circle"></div>
+        <div class="preloader__logo">ARTMEBO</div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">ArtMe<span>Bo</span></a>
+                
+                <nav class="nav-links">
+                    <a href="#home" class="active">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="mailto:mbou7841@gmail.com" class="btn-outline">Contact</a>
+                </nav>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Dark & Moody <span>Illustrations</span>
+                </h1>
+                <p class="hero-subtitle">
+                    I'm Bouchra, a freelance illustrator specializing in custom portraits and digital art with a distinctive dark aesthetic.
+                </p>
+                
+                <div class="hero-btns">
+                    <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
+                    <a href="mailto:mbou7841@gmail.com" class="btn btn-outline">Commission Work</a>
+                </div>
+                
+                <div class="hero-social">
+                    <a href="https://www.linkedin.com/in/bouchra-houmaidi" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.fiverr.com/artmebo" target="_blank"><i class="fab fa-fonticons"></i></a>
+                    <a href="mailto:mbou7841@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="images/hero.png" alt="Illustration by ArtMeBo" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">
+                About <span>Me</span>
+            </h2>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 class="about-title">Digital Illustrator</h3>
+                    <p class="about-desc">
+                        With over 5 years of experience, I create evocative digital illustrations that blend technical skill with emotional depth. My work ranges from detailed portraits to minimalist designs, always with a distinctive style.
+                    </p>
+                    <p class="about-desc">
+                        I believe in the power of visual storytelling and work closely with clients to bring their unique visions to life through custom artwork.
+                    </p>
+                    
+                    <div class="about-skills">
+                        <span class="skill">Black & White</span>
+                        <span class="skill">Faceless Portraits</span>
+                        <span class="skill">Line Art</span>
+                        <span class="skill">Minimalist</span>
+                        <span class="skill">Digital Painting</span>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img src="images/aboutme.png" alt="About ArtMeBo" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">
+                Portfolio <span>Gallery</span>
+            </h2>
+            
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All Works</button>
+                <button class="filter-btn" data-filter="bw">Black & White</button>
+                <button class="filter-btn" data-filter="faceless">Faceless</button>
+                <button class="filter-btn" data-filter="lineart">Line Art</button>
+                <button class="filter-btn" data-filter="minimalist">Minimalist</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- Black & White -->
+                <div class="portfolio-item" data-category="bw">
+                    <img src="images/bw.png" alt="Black and White Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Black & White</span>
+                        <h3 class="portfolio-title">Elegant Portrait</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="bw">
+                    <img src="images/bw1.png" alt="Black and White Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Black & White</span>
+                        <h3 class="portfolio-title">Detailed Portrait</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="bw">
+                    <img src="images/bw2.png" alt="Black and White Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Black & White</span>
+                        <h3 class="portfolio-title">Classic Style</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="bw">
+                    <img src="images/bw3.png" alt="Black and White Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Black & White</span>
+                        <h3 class="portfolio-title">Bold Contrast</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="bw">
+                    <img src="images/bw4.png" alt="Black and White Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Black & White</span>
+                        <h3 class="portfolio-title">Dramatic Lighting</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="bw">
+                    <img src="images/bw5.png" alt="Black and White Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Black & White</span>
+                        <h3 class="portfolio-title">Expressive Lines</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="bw">
+                    <img src="images/bw6.png" alt="Black and White Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Black & White</span>
+                        <h3 class="portfolio-title">Fine Details</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="bw">
+                    <img src="images/bw7.png" alt="Black and White Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Black & White</span>
+                        <h3 class="portfolio-title">High Contrast</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="bw">
+                    <img src="images/bw8.png" alt="Black and White Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Black & White</span>
+                        <h3 class="portfolio-title">Stylized Portrait</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="bw">
+                    <img src="images/bw9.png" alt="Black and White Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Black & White</span>
+                        <h3 class="portfolio-title">Graphic Style</h3>
+                    </div>
+                </div>
+                
+                <!-- Faceless -->
+                <div class="portfolio-item" data-category="faceless">
+                    <img src="images/1.png" alt="Faceless Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Faceless</span>
+                        <h3 class="portfolio-title">Modern Portrait</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="faceless">
+                    <img src="images/2.png" alt="Faceless Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Faceless</span>
+                        <h3 class="portfolio-title">Minimalist Style</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="faceless">
+                    <img src="images/3.png" alt="Faceless Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Faceless</span>
+                        <h3 class="portfolio-title">Geometric Design</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="faceless">
+                    <img src="images/4.png" alt="Faceless Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Faceless</span>
+                        <h3 class="portfolio-title">Abstract Portrait</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="faceless">
+                    <img src="images/5.png" alt="Faceless Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Faceless</span>
+                        <h3 class="portfolio-title">Contemporary Art</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="faceless">
+                    <img src="images/6.png" alt="Faceless Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Faceless</span>
+                        <h3 class="portfolio-title">Stylized Design</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="faceless">
+                    <img src="images/7.png" alt="Faceless Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Faceless</span>
+                        <h3 class="portfolio-title">Minimalist Portrait</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="faceless">
+                    <img src="images/neoart.png" alt="Faceless Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Faceless</span>
+                        <h3 class="portfolio-title">Neo Art Style</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="faceless">
+                    <img src="images/sample.png" alt="Faceless Portrait" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Faceless</span>
+                        <h3 class="portfolio-title">Modern Design</h3>
+                    </div>
+                </div>
+                
+                <!-- Line Art -->
+                <div class="portfolio-item" data-category="lineart">
+                    <img src="images/la1.png" alt="Line Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Line Art</span>
+                        <h3 class="portfolio-title">Detailed Illustration</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="lineart">
+                    <img src="images/la2.png" alt="Line Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Line Art</span>
+                        <h3 class="portfolio-title">Fine Line Work</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="lineart">
+                    <img src="images/la3.png" alt="Line Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Line Art</span>
+                        <h3 class="portfolio-title">Graphic Lines</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="lineart">
+                    <img src="images/la4.png" alt="Line Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Line Art</span>
+                        <h3 class="portfolio-title">Contour Drawing</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="lineart">
+                    <img src="images/la5.png" alt="Line Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Line Art</span>
+                        <h3 class="portfolio-title">Expressive Lines</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="lineart">
+                    <img src="images/la6.png" alt="Line Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Line Art</span>
+                        <h3 class="portfolio-title">Detailed Artwork</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="lineart">
+                    <img src="images/la7.png" alt="Line Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Line Art</span>
+                        <h3 class="portfolio-title">Graphic Style</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="lineart">
+                    <img src="images/la8.png" alt="Line Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Line Art</span>
+                        <h3 class="portfolio-title">Minimalist Lines</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="lineart">
+                    <img src="images/la9.png" alt="Line Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Line Art</span>
+                        <h3 class="portfolio-title">Fine Art Drawing</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="lineart">
+                    <img src="images/la10.png" alt="Line Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Line Art</span>
+                        <h3 class="portfolio-title">Graphic Illustration</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="lineart">
+                    <img src="images/la11.png" alt="Line Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Line Art</span>
+                        <h3 class="portfolio-title">Detailed Work</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="lineart">
+                    <img src="images/la12.png" alt="Line Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Line Art</span>
+                        <h3 class="portfolio-title">Expressive Art</h3>
+                    </div>
+                </div>
+                
+                <!-- Minimalist -->
+                <div class="portfolio-item" data-category="minimalist">
+                    <img src="images/boy.png" alt="Minimalist Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Minimalist</span>
+                        <h3 class="portfolio-title">Simple Portrait</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="minimalist">
+                    <img src="images/girl.png" alt="Minimalist Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Minimalist</span>
+                        <h3 class="portfolio-title">Clean Design</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="minimalist">
+                    <img src="images/flower.png" alt="Minimalist Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Minimalist</span>
+                        <h3 class="portfolio-title">Floral Elements</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="minimalist">
+                    <img src="images/body.png" alt="Minimalist Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Minimalist</span>
+                        <h3 class="portfolio-title">Body Art</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="minimalist">
+                    <img src="images/paint.png" alt="Minimalist Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Minimalist</span>
+                        <h3 class="portfolio-title">Paint Effect</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="minimalist">
+                    <img src="images/shsh.png" alt="Minimalist Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Minimalist</span>
+                        <h3 class="portfolio-title">Silhouette Art</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="minimalist">
+                    <img src="images/night.png" alt="Minimalist Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Minimalist</span>
+                        <h3 class="portfolio-title">Night Scene</h3>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="minimalist">
+                    <img src="images/skull.png" alt="Minimalist Art" class="portfolio-img" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-category">Minimalist</span>
+                        <h3 class="portfolio-title">Skull Design</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">
+                Client <span>Testimonials</span>
+            </h2>
+            
+            <div class="testimonials-slider swiper">
+                <div class="swiper-wrapper">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial swiper-slide">
+                        <img src="images/woman.png" alt="Client" class="testimonial-img" loading="lazy">
+                        <p class="testimonial-text">
+                            "Bouchra has been an absolute angel, very kind and quick to the editing. I wanted a portrait for my brother for his birthday, but adding extra things to it. Although the quality of the picture was poor, she produced a masterpiece."
+                        </p>
+                        <h4 class="testimonial-author">Nadia A.</h4>
+                        <p class="testimonial-role">United Kingdom</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial swiper-slide">
+                        <img src="images/man.png" alt="Client" class="testimonial-img" loading="lazy">
+                        <p class="testimonial-text">
+                            "Artmebo was so awesome the whole experience!! She was very patient, caring and understanding with me. I was ready to give up, but she kept trying until she got my approval."
+                        </p>
+                        <h4 class="testimonial-author">James A.</h4>
+                        <p class="testimonial-role">United States</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial swiper-slide">
+                        <img src="images/woman.png" alt="Client" class="testimonial-img" loading="lazy">
+                        <p class="testimonial-text">
+                            "Loved to work with Bouchra Art! Very professional and beautiful illustrations and on top that great communication and understanding. Hope to work with her in the future again."
+                        </p>
+                        <h4 class="testimonial-author">Meler D.</h4>
+                        <p class="testimonial-role">United Kingdom</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial swiper-slide">
+                        <img src="images/woman.png" alt="Client" class="testimonial-img" loading="lazy">
+                        <p class="testimonial-text">
+                            "Wonderful experience, very professional and extremely talented! I will be using Artmebo's service again!"
+                        </p>
+                        <h4 class="testimonial-author">Melissa M.</h4>
+                        <p class="testimonial-role">United States</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 5 -->
+                    <div class="testimonial swiper-slide">
+                        <img src="images/woman.png" alt="Client" class="testimonial-img" loading="lazy">
+                        <p class="testimonial-text">
+                            "Very great person to work with! Great job awesome experience. Highly recommended"
+                        </p>
+                        <h4 class="testimonial-author">Katharina L.</h4>
+                        <p class="testimonial-role">Belgium</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-info">
+                <h3 class="contact-title">Ready to Create Something Together?</h3>
+                <p class="contact-subtitle">Get in touch to discuss your custom illustration project</p>
+                
+                <div class="contact-email">
+                    <a href="mailto:mbou7841@gmail.com">mbou7841@gmail.com</a>
+                </div>
+                
+                <div class="contact-social">
+                    <a href="https://www.linkedin.com/in/bouchra-houmaidi" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.fiverr.com/artmebo" target="_blank"><i class="fab fa-fonticons"></i></a>
+                    <a href="mailto:mbou7841@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">ArtMe<span>Bo</span></div>
+            
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="mailto:mbou7841@gmail.com">Contact</a>
+            </div>
+            
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/bouchra-houmaidi" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.fiverr.com/artmebo" target="_blank"><i class="fab fa-fonticons"></i></a>
+                <a href="mailto:mbou7841@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            
+            <div class="footer-copyright">
+                &copy; <span id="year"></span> ArtMeBo. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            document.querySelector('.preloader').style.opacity = '0';
+            setTimeout(() => {
+                document.querySelector('.preloader').style.display = 'none';
+            }, 500);
+        });
+        
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Sticky Header
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+        
+        // Portfolio Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Testimonials Slider
+        const swiper = new Swiper('.testimonials-slider', {
+            loop: true,
+            grabCursor: true,
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            }
+        });
+        
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
